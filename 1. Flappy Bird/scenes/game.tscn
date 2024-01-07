@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbjb23ftgdug"]
+[gd_scene load_steps=3 format=3 uid="uid://dbjb23ftgdug"]
 
 [ext_resource type="PackedScene" uid="uid://jmi132qm7004" path="res://scenes/bird.tscn" id="1_1ae7v"]
+[ext_resource type="Script" path="res://scenes/Camera.gd" id="2_0vxtw"]
 
 [node name="Game" type="Node2D"]
 
@@ -8,3 +9,4 @@
 position = Vector2(-500, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_0vxtw")
