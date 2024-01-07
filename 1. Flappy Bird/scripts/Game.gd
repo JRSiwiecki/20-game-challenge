@@ -4,11 +4,18 @@ extends Node2D
 @export var min_gap: float = 250.0
 @export var max_gap: float = 350.0
  
+# Add extra offset to screen width so pipe can't be seen while spawning
 # Use halved screen height value so pipe is actually on screen
-const SCREEN_WIDTH: float = 1152.0
+const SCREEN_WIDTH: float = 1152.0 + 200.0
 const SCREEN_HEIGHT: float = 646.0 / 2.0
 
+func _ready() -> void:
+	spawn_pipes()
+
 func _on_timer_timeout() -> void:
+	spawn_pipes()
+
+func spawn_pipes() -> void:
 	# Spawn pipes on timeout
 	var top_pipe: Node2D = pipe.instantiate()
 	var bottom_pipe: Node2D = pipe.instantiate()

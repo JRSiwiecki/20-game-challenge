@@ -19,7 +19,6 @@ position = Vector2(164, 311)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 325)
-zoom = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
 [node name="Ground Collider" type="Area2D" parent="Camera2D"]
@@ -38,13 +37,13 @@ script = ExtResource("3_n0l6c")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(0.9, 0.897)
+scale = Vector2(0.91, 0.907)
 texture = ExtResource("4_ibgdl")
 centered = false
 metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="Camera2D/Ground Collider" to="Camera2D/Ground Collider" method="_on_body_entered"]
