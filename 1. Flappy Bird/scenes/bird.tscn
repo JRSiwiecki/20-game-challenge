@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://jmi132qm7004"]
+
+[ext_resource type="Script" path="res://scripts/Bird.gd" id="1_1trde"]
+[ext_resource type="Texture2D" uid="uid://dk6sghm1ga0ad" path="res://assets/bird.png" id="1_stefi"]
+
+[node name="Bird" type="CharacterBody2D"]
+script = ExtResource("1_1trde")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_stefi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-25, 46, -8, 53, 26, 47, 49, 25, 56, 1, 55, -14, 74, -19, 85, -29, 92, -44, 88, -67, 72, -82, 55, -84, 33, -78, 20, -65, 16, -53, -4, -56, -24, -49, -44, -35, -55, -16, -55, 5, -50, 24, -39, 36)
