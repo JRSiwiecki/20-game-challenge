@@ -3,6 +3,12 @@ extends Node2D
 @export var pipe: PackedScene
 @export var min_gap: float = 250.0
 @export var max_gap: float = 350.0
+
+@onready var score_label: Label = $CanvasLayer/MarginContainer/Label
+
+# Need this or we will have 2 score when passing through first pipe
+# and forever be ahead by 1 score.
+var score: int = -1
  
 # Add extra offset to screen width so pipe can't be seen while spawning
 # Use halved screen height value so pipe is actually on screen
@@ -14,6 +20,8 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	spawn_pipes()
+	increment_score()
+	update_ui()
 
 func spawn_pipes() -> void:
 	# Spawn pipes on timeout
@@ -32,3 +40,9 @@ func spawn_pipes() -> void:
 	
 	top_pipe.position.y = SCREEN_HEIGHT - gap
 	bottom_pipe.position.y = SCREEN_HEIGHT + gap
+
+func increment_score() -> void:
+	score += 1
+
+func update_ui() -> void:
+	score_label.text = "Score: " + str(score)
