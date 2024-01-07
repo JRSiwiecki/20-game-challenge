@@ -21,12 +21,20 @@ position = Vector2(164, 311)
 position = Vector2(576, 325)
 metadata/_edit_lock_ = true
 
+[node name="Ceiling Collider" type="Area2D" parent="Camera2D"]
+position = Vector2(-430, 324)
+script = ExtResource("3_kfjsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Ceiling Collider"]
+position = Vector2(142, 25)
+shape = SubResource("RectangleShape2D_7ob1g")
+
 [node name="Ground Collider" type="Area2D" parent="Camera2D"]
 position = Vector2(-430, 324)
 script = ExtResource("3_kfjsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Ground Collider"]
-position = Vector2(142, 14.5)
+position = Vector2(145, -732)
 shape = SubResource("RectangleShape2D_7ob1g")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -46,5 +54,6 @@ metadata/_edit_lock_ = true
 wait_time = 2.0
 autostart = true
 
+[connection signal="body_entered" from="Camera2D/Ceiling Collider" to="Camera2D/Ceiling Collider" method="_on_body_entered"]
 [connection signal="body_entered" from="Camera2D/Ground Collider" to="Camera2D/Ground Collider" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
