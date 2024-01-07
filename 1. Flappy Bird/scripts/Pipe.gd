@@ -1,7 +1,7 @@
 extends Node2D
 
 func _process(delta: float) -> void:
-	position.x += Globals.scroll_speed * delta
+	position.x += Globals.SCROLL_SPEED * delta
 	
 	if position.x <= -100.0:
 		queue_free()

@@ -10,12 +10,6 @@ extends Node2D
 @onready var score_sound: AudioStreamPlayer = $"Score Scound"
 @onready var lose_sound: AudioStreamPlayer = $"Lose Sound"
 
-@onready var high_score: int = load_high_score()
-
-# Need this or we will have 2 score when passing through first pipe
-# and forever be ahead by 1 score.
-var score: int = -1
- 
 # Add extra offset to screen width so pipe can't be seen while spawning
 # Use halved screen height value so pipe is actually on screen
 const SCREEN_WIDTH: float = 1152.0 + 200.0
@@ -26,10 +20,12 @@ const SAVE_PATH: String = "user://savegame.save"
 func _ready() -> void:
 	spawn_pipes()
 	update_high_score_text()
+	Globals.high_score = load_high_score()
+	update_high_score_text()
 
 func _on_timer_timeout() -> void:
 	spawn_pipes()
-	increment_score()
+	update_scores()
 	play_sound()
 	update_ui()
 
@@ -51,13 +47,13 @@ func spawn_pipes() -> void:
 	top_pipe.position.y = SCREEN_HEIGHT - gap
 	bottom_pipe.position.y = SCREEN_HEIGHT + gap
 
-func increment_score() -> void:
-	score += 1
+func update_scores() -> void:
+	Globals.score += 1
 
 func play_sound() -> void:
 	# One off check that I don't like so we don't play sounds before
 	# passing through first pipe.
-	if score <= 0:
+	if Globals.score <= 0:
 		return
 	
 	score_sound.play()
@@ -67,25 +63,29 @@ func update_ui() -> void:
 	update_score_text()
 
 func update_high_score_text() -> void:
-	high_score_label.text = "High Score: " + str(high_score)
+	high_score_label.text = "High Score: " + str(Globals.high_score)
 
 func update_score_text() -> void:
-	score_label.text = "Score: " + str(score)
+	score_label.text = "Score: " + str(Globals.score)
 
 func end_game() -> void:
 	lose_sound.play()
-	await save_high_score(score)
+	
+	await save_high_score(Globals.score)
 	await get_tree().create_timer(0.15).timeout
-	get_tree().quit()
+	
+	Globals.score = max(0, Globals.score)
+	
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func save_high_score(current_score: int) -> void:
-	if score <= high_score:
+	if Globals.score <= Globals.high_score:
 		return
 	
-	high_score = max(score, high_score)
+	Globals.high_score = Globals.score
 	
 	var save_game = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	save_game.store_var(high_score)
+	save_game.store_var(Globals.high_score)
 
 func load_high_score():
 	# No save found
@@ -93,4 +93,4 @@ func load_high_score():
 		return 0
 	
 	var save_game = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	return save_game.get_var(high_score)
+	return save_game.get_var(Globals.high_score)
