@@ -2,7 +2,9 @@ extends Node2D
 
 @export var pipe: PackedScene
 @export var min_gap: float = 250.0
-@export var max_gap: float = 350.0
+@export var max_gap: float = 300.0
+@export var min_offset: float = 25.0
+@export var max_offset: float = 100.0
 
 @onready var score_label: Label = $"CanvasLayer/MarginContainer/Score Label"
 @onready var high_score_label: Label = $"CanvasLayer/MarginContainer/High Score Label"
@@ -38,14 +40,15 @@ func spawn_pipes() -> void:
 	add_child(bottom_pipe)
 	
 	var gap: float = randf_range(min_gap, max_gap)
+	var offset: float = randf_range(min_offset, max_offset)
 	
 	bottom_pipe.set_rotation_degrees(180)
 	
 	top_pipe.position.x = SCREEN_WIDTH
 	bottom_pipe.position.x = SCREEN_WIDTH
 	
-	top_pipe.position.y = SCREEN_HEIGHT - gap
-	bottom_pipe.position.y = SCREEN_HEIGHT + gap
+	top_pipe.position.y = SCREEN_HEIGHT - gap + offset
+	bottom_pipe.position.y = SCREEN_HEIGHT + gap + offset
 
 func update_scores() -> void:
 	Globals.score += 1
