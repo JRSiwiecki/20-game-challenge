@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://jmi132qm7004"]
 
-[ext_resource type="Script" path="res://scenes/Bird.gd" id="1_n8ddg"]
+[ext_resource type="Script" path="res://scripts/Bird.gd" id="1_1trde"]
 [ext_resource type="Texture2D" uid="uid://dk6sghm1ga0ad" path="res://assets/bird.png" id="1_stefi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pk4i"]
+radius = 53.2259
 
 [node name="Bird" type="CharacterBody2D"]
-script = ExtResource("1_n8ddg")
+script = ExtResource("1_1trde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2pk4i")
