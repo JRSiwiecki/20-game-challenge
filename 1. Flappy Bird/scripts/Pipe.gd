@@ -8,4 +8,4 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Bird":
-		get_tree().quit()
+		get_node("/root/Game").end_game()

@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var score_label: Label = $CanvasLayer/MarginContainer/Label
 @onready var score_sound: AudioStreamPlayer = $"Score Scound"
+@onready var lose_sound: AudioStreamPlayer = $"Lose Sound"
 
 # Need this or we will have 2 score when passing through first pipe
 # and forever be ahead by 1 score.
@@ -56,3 +57,8 @@ func play_sound() -> void:
 
 func update_ui() -> void:
 	score_label.text = "Score: " + str(score)
+
+func end_game() -> void:
+	lose_sound.play()
+	await get_tree().create_timer(0.15).timeout
+	get_tree().quit()

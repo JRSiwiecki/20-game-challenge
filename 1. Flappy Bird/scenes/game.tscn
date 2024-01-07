@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbjb23ftgdug"]
+[gd_scene load_steps=10 format=3 uid="uid://dbjb23ftgdug"]
 
 [ext_resource type="PackedScene" uid="uid://jmi132qm7004" path="res://scenes/bird.tscn" id="1_1ae7v"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_jsm23"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://coxjo40ba0rhn" path="res://assets/sky.png" id="4_ibgdl"]
 [ext_resource type="PackedScene" uid="uid://b34wtodr1opwy" path="res://scenes/pipe.tscn" id="5_6sapj"]
 [ext_resource type="AudioStream" uid="uid://dgc3qd8e6yq7m" path="res://assets/score.wav" id="7_bk136"]
+[ext_resource type="AudioStream" uid="uid://2y4dsp51rmqg" path="res://assets/lose.wav" id="8_qc7o7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ob1g"]
 size = Vector2(576, 29)
@@ -27,7 +28,7 @@ position = Vector2(-430, 324)
 script = ExtResource("3_kfjsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Ceiling Collider"]
-position = Vector2(142, 25)
+position = Vector2(146, -7)
 shape = SubResource("RectangleShape2D_7ob1g")
 
 [node name="Ground Collider" type="Area2D" parent="Camera2D"]
@@ -35,7 +36,7 @@ position = Vector2(-430, 324)
 script = ExtResource("3_kfjsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Ground Collider"]
-position = Vector2(145, -732)
+position = Vector2(150, -639)
 shape = SubResource("RectangleShape2D_7ob1g")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -71,6 +72,9 @@ text = "Score: 0"
 
 [node name="Score Scound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_bk136")
+
+[node name="Lose Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qc7o7")
 
 [connection signal="body_entered" from="Camera2D/Ceiling Collider" to="Camera2D/Ceiling Collider" method="_on_body_entered"]
 [connection signal="body_entered" from="Camera2D/Ground Collider" to="Camera2D/Ground Collider" method="_on_body_entered"]
