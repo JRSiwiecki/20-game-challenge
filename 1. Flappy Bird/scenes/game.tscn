@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://dbjb23ftgdug"]
+[gd_scene load_steps=2 format=3 uid="uid://dbjb23ftgdug"]
+
+[ext_resource type="PackedScene" uid="uid://jmi132qm7004" path="res://scenes/bird.tscn" id="1_1ae7v"]
 
 [node name="Game" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_1ae7v")]
+position = Vector2(-500, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
