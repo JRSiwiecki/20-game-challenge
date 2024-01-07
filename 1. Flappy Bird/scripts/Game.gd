@@ -5,6 +5,7 @@ extends Node2D
 @export var max_gap: float = 350.0
 
 @onready var score_label: Label = $CanvasLayer/MarginContainer/Label
+@onready var score_sound: AudioStreamPlayer = $"Score Scound"
 
 # Need this or we will have 2 score when passing through first pipe
 # and forever be ahead by 1 score.
@@ -21,6 +22,7 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	spawn_pipes()
 	increment_score()
+	play_sound()
 	update_ui()
 
 func spawn_pipes() -> void:
@@ -43,6 +45,14 @@ func spawn_pipes() -> void:
 
 func increment_score() -> void:
 	score += 1
+
+func play_sound() -> void:
+	# One off check that I don't like so we don't play sounds before
+	# passing through first pipe.
+	if score <= 0:
+		return
+	
+	score_sound.play()
 
 func update_ui() -> void:
 	score_label.text = "Score: " + str(score)

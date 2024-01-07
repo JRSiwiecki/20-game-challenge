@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbjb23ftgdug"]
+[gd_scene load_steps=9 format=3 uid="uid://dbjb23ftgdug"]
 
 [ext_resource type="PackedScene" uid="uid://jmi132qm7004" path="res://scenes/bird.tscn" id="1_1ae7v"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_jsm23"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Scrolling Background.gd" id="3_n0l6c"]
 [ext_resource type="Texture2D" uid="uid://coxjo40ba0rhn" path="res://assets/sky.png" id="4_ibgdl"]
 [ext_resource type="PackedScene" uid="uid://b34wtodr1opwy" path="res://scenes/pipe.tscn" id="5_6sapj"]
+[ext_resource type="AudioStream" uid="uid://dgc3qd8e6yq7m" path="res://assets/score.wav" id="7_bk136"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ob1g"]
 size = Vector2(576, 29)
@@ -67,6 +68,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Score: 0"
+
+[node name="Score Scound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bk136")
 
 [connection signal="body_entered" from="Camera2D/Ceiling Collider" to="Camera2D/Ceiling Collider" method="_on_body_entered"]
 [connection signal="body_entered" from="Camera2D/Ground Collider" to="Camera2D/Ground Collider" method="_on_body_entered"]
