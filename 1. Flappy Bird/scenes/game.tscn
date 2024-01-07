@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbjb23ftgdug"]
 
 [ext_resource type="PackedScene" uid="uid://jmi132qm7004" path="res://scenes/bird.tscn" id="1_1ae7v"]
-[ext_resource type="Script" path="res://scripts/Camera.gd" id="2_0vxtw"]
 [ext_resource type="Script" path="res://scripts/Ground Collider.gd" id="3_kfjsl"]
+[ext_resource type="Texture2D" uid="uid://coxjo40ba0rhn" path="res://assets/sky.png" id="4_ibgdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ob1g"]
 size = Vector2(576, 29)
@@ -10,10 +10,11 @@ size = Vector2(576, 29)
 [node name="Game" type="Node2D"]
 
 [node name="Bird" parent="." instance=ExtResource("1_1ae7v")]
-position = Vector2(-300, 0)
+position = Vector2(164, 311)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("2_0vxtw")
+position = Vector2(576, 325)
+metadata/_edit_lock_ = true
 
 [node name="Ground Collider" type="Area2D" parent="Camera2D"]
 position = Vector2(-430, 324)
@@ -22,5 +23,18 @@ script = ExtResource("3_kfjsl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Ground Collider"]
 position = Vector2(142, 14.5)
 shape = SubResource("RectangleShape2D_7ob1g")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(10, 10)
+motion_mirroring = Vector2(1152, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.9, 0.897)
+texture = ExtResource("4_ibgdl")
+centered = false
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Camera2D/Ground Collider" to="Camera2D/Ground Collider" method="_on_body_entered"]
