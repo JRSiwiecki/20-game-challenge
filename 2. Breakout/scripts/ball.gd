@@ -14,14 +14,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 
-func bounce(side_of_ball_hit : Side_Of_Ball_Hit):
+func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit):
 	match side_of_ball_hit:
 		Side_Of_Ball_Hit.TOP, Side_Of_Ball_Hit.BOTTOM:
 			velocity.y *= -1
 		Side_Of_Ball_Hit.LEFT, Side_Of_Ball_Hit.RIGHT:
 			velocity.x *= -1
 	
-	increase_ball_speed()
+	if object_hit == Globals.Object_Hit.BRICK:
+		increase_ball_speed()
 
 func increase_ball_speed():
 	

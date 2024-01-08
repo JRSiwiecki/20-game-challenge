@@ -77,6 +77,9 @@ metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("2_8bwxo")]
 position = Vector2(187, 373)
+ball_speed = 500.0
+ball_speed_increase = 25.0
+max_ball_speed = 850.0
 metadata/_edit_lock_ = true
 
 [node name="Bricks" type="Node2D" parent="."]
