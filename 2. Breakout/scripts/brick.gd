@@ -10,4 +10,6 @@ func _on_ball_detector_body_entered(body: Node2D) -> void:
 	
 	body.bounce(Ball.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.BRICK)
 	brick_hit.play()
+
+func _on_brick_hit_finished() -> void:
 	queue_free()

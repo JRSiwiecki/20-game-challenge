@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/brick.gd" id="1_6grfv"]
 [ext_resource type="Texture2D" uid="uid://drf1aa6kb52fw" path="res://assets/art/brick.png" id="1_bgkoy"]
-[ext_resource type="AudioStream" uid="uid://d3fogtrinrtkk" path="res://assets/sounds/brick_hit.wav" id="3_i10h1"]
+[ext_resource type="AudioStream" uid="uid://csdfii48dum6d" path="res://assets/sounds/brick_hit.wav" id="3_i10h1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5304k"]
 size = Vector2(64, 16)
@@ -29,4 +29,5 @@ shape = SubResource("RectangleShape2D_5304k")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_rikgx")
 
+[connection signal="finished" from="Brick Hit" to="." method="_on_brick_hit_finished"]
 [connection signal="body_entered" from="Ball Detector" to="." method="_on_ball_detector_body_entered"]
