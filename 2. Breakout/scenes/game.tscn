@@ -99,39 +99,51 @@ position = Vector2(228, 62)
 position = Vector2(311, 62)
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(65, 104)
 
 [node name="Brick6" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(147, 104)
 
 [node name="Brick7" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(227, 104)
 
 [node name="Brick8" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(310, 104)
 
 [node name="Brick9" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(65, 146)
 
 [node name="Brick10" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(147, 146)
 
 [node name="Brick11" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(227, 146)
 
 [node name="Brick12" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(310, 146)
 
 [node name="Brick13" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(65, 187)
 
 [node name="Brick14" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(147, 187)
 
 [node name="Brick15" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(227, 187)
 
 [node name="Brick16" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(310, 187)
 
 [connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
