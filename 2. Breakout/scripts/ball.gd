@@ -3,6 +3,8 @@ extends CharacterBody2D
 class_name Ball
 
 @export var ball_speed : float = 500.0
+@export var ball_speed_increase : float = 25.0
+@export var max_ball_speed : float = 850.0
 
 enum Side_Of_Ball_Hit {TOP, BOTTOM, LEFT, RIGHT}
 
@@ -18,4 +20,14 @@ func bounce(side_of_ball_hit : Side_Of_Ball_Hit):
 			velocity.y *= -1
 		Side_Of_Ball_Hit.LEFT, Side_Of_Ball_Hit.RIGHT:
 			velocity.x *= -1
-			
+	
+	increase_ball_speed()
+
+func increase_ball_speed():
+	
+	if ball_speed >= max_ball_speed:
+		return
+	
+	ball_speed += ball_speed_increase
+	velocity += Vector2(-ball_speed_increase if velocity.x <= 0.0 else ball_speed_increase, 
+	-ball_speed_increase if velocity.y <= 0.0 else ball_speed_increase)
