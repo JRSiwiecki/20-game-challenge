@@ -19,4 +19,4 @@ func _on_ball_detector_body_entered(body: Node2D) -> void:
 	if body.name != "Ball": 
 		return
 	
-	body.bounce(body.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.PADDLE)
+	body.bounce(Ball.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.PADDLE)

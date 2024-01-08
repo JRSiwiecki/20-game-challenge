@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 
 func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit) -> void:
 	# Hit the bottom wall
-	if object_hit == Globals.Object_Hit.WALL and Side_Of_Ball_Hit.BOTTOM:
+	if object_hit == Globals.Object_Hit.WALL and side_of_ball_hit == Side_Of_Ball_Hit.BOTTOM:
 		Globals.decrement_lives()
 		
 		if Globals.lives < 0:
