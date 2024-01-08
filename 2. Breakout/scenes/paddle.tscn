@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpb2tl0xsslgb"]
+[gd_scene load_steps=6 format=3 uid="uid://dpb2tl0xsslgb"]
 
 [ext_resource type="Texture2D" uid="uid://cpd7qor47rao" path="res://assets/art/paddle.png" id="1_jgjap"]
 [ext_resource type="Script" path="res://scripts/paddle.gd" id="1_shvbl"]
+[ext_resource type="AudioStream" uid="uid://1gas7767emcw" path="res://assets/sounds/paddle_hit.wav" id="2_abf2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kix8x"]
 size = Vector2(128, 32)
@@ -9,8 +10,12 @@ size = Vector2(128, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x58f"]
 size = Vector2(135, 38)
 
-[node name="Paddle" type="CharacterBody2D"]
+[node name="Paddle" type="CharacterBody2D" node_paths=PackedStringArray("paddle_hit")]
 script = ExtResource("1_shvbl")
+paddle_hit = NodePath("Paddle Hit")
+
+[node name="Paddle Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_abf2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jgjap")

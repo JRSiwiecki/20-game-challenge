@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://damxb0aj5wo2q"]
+[gd_scene load_steps=6 format=3 uid="uid://damxb0aj5wo2q"]
 
 [ext_resource type="Script" path="res://scripts/brick.gd" id="1_6grfv"]
 [ext_resource type="Texture2D" uid="uid://drf1aa6kb52fw" path="res://assets/art/brick.png" id="1_bgkoy"]
+[ext_resource type="AudioStream" uid="uid://d3fogtrinrtkk" path="res://assets/sounds/brick_hit.wav" id="3_i10h1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5304k"]
 size = Vector2(64, 16)
@@ -9,8 +10,12 @@ size = Vector2(64, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rikgx"]
 size = Vector2(67, 20)
 
-[node name="Brick" type="StaticBody2D"]
+[node name="Brick" type="StaticBody2D" node_paths=PackedStringArray("brick_hit")]
 script = ExtResource("1_6grfv")
+brick_hit = NodePath("Brick Hit")
+
+[node name="Brick Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i10h1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bgkoy")

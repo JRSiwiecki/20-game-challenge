@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1x0hoe4y26dh"]
+[gd_scene load_steps=13 format=3 uid="uid://d1x0hoe4y26dh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb2tl0xsslgb" path="res://scenes/paddle.tscn" id="1_crhca"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_irhid"]
 [ext_resource type="PackedScene" uid="uid://bkebbgf16fsrc" path="res://scenes/ball.tscn" id="2_8bwxo"]
 [ext_resource type="PackedScene" uid="uid://qxd5fythoxk8" path="res://scenes/ui.tscn" id="2_kewx5"]
 [ext_resource type="PackedScene" uid="uid://damxb0aj5wo2q" path="res://scenes/brick.tscn" id="3_71dva"]
+[ext_resource type="AudioStream" uid="uid://duak30iqnq14j" path="res://assets/sounds/wall_hit.wav" id="6_ha35w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekwta"]
 size = Vector2(405, 24)
@@ -24,8 +25,9 @@ size = Vector2(8.5, 772)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y45xv"]
 size = Vector2(8, 771)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("wall_hit")]
 script = ExtResource("1_irhid")
+wall_hit = NodePath("Wall Hit")
 
 [node name="UI" parent="." instance=ExtResource("2_kewx5")]
 ball = ExtResource("2_8bwxo")
@@ -147,6 +149,9 @@ position = Vector2(228, 205)
 [node name="Brick16" parent="Bricks" instance=ExtResource("3_71dva")]
 modulate = Color(0, 1, 1, 1)
 position = Vector2(311, 205)
+
+[node name="Wall Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ha35w")
 
 [connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]

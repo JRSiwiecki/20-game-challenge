@@ -5,6 +5,8 @@ class_name Paddle
 @export var paddle_speed : float = 500.0
 @export var scale_decrement : float = 0.025
 
+@export var paddle_hit : AudioStreamPlayer
+
 var x_scale : float = 1.0
 
 func _physics_process(_delta: float) -> void:
@@ -22,6 +24,7 @@ func _on_ball_detector_body_entered(body: Node2D) -> void:
 		return
 	
 	body.bounce(Ball.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.PADDLE)
+	paddle_hit.play()
 
 func shrink_paddle() -> void:
 	x_scale -= scale_decrement
