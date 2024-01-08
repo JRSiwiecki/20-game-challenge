@@ -6,5 +6,5 @@ func _on_ball_detector_body_entered(body: Node2D) -> void:
 	if body.name != "Ball":
 		return
 	
-	body.velocity.y *= -1
+	body.bounce(body.Side_Of_Ball_Hit.BOTTOM)
 	queue_free()
