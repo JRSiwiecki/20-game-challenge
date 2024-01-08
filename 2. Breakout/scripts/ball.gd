@@ -18,6 +18,16 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 
 func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit) -> void:
+	# Hit the bottom wall
+	if object_hit == Globals.Object_Hit.WALL and Side_Of_Ball_Hit.BOTTOM:
+		Globals.decrement_lives()
+		
+		if Globals.lives < 0:
+			queue_free()
+			return
+		
+		lives_updated.emit()
+	
 	match side_of_ball_hit:
 		Side_Of_Ball_Hit.TOP, Side_Of_Ball_Hit.BOTTOM:
 			velocity.y *= -1
@@ -28,14 +38,6 @@ func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit
 		increase_ball_speed()
 		Globals.increment_score()
 		score_updated.emit()
-	
-	# Hit the bottom wall
-	if object_hit == Globals.Object_Hit.WALL and Side_Of_Ball_Hit.BOTTOM:
-		Globals.decrement_lives()
-		lives_updated.emit()
-		
-		if Globals.lives <= -1:
-			queue_free()
 
 func increase_ball_speed() -> void:
 	
