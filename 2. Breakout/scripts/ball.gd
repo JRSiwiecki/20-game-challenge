@@ -24,7 +24,7 @@ func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit
 		
 		if Globals.lives < 0:
 			queue_free()
-			get_tree().quit()
+			Globals.end_game()
 			return
 		
 		lives_updated.emit()
