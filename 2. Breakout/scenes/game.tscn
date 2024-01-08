@@ -80,8 +80,9 @@ shape = SubResource("RectangleShape2D_y45xv")
 position = Vector2(192, 706)
 metadata/_edit_lock_ = true
 
-[node name="Ball" parent="." instance=ExtResource("2_8bwxo")]
+[node name="Ball" parent="." node_paths=PackedStringArray("paddle") instance=ExtResource("2_8bwxo")]
 position = Vector2(187, 373)
+paddle = NodePath("../Paddle")
 metadata/_edit_lock_ = true
 
 [node name="Bricks" type="Node2D" parent="."]

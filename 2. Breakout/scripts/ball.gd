@@ -9,6 +9,8 @@ signal lives_updated
 @export var ball_speed_increase : float = 25.0
 @export var max_ball_speed : float = 850.0
 
+@export var paddle : Paddle
+
 enum Side_Of_Ball_Hit {TOP, BOTTOM, LEFT, RIGHT}
 
 func _ready() -> void:
@@ -39,6 +41,7 @@ func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit
 		increase_ball_speed()
 		Globals.increment_score()
 		score_updated.emit()
+		paddle.shrink_paddle()
 
 func increase_ball_speed() -> void:
 	

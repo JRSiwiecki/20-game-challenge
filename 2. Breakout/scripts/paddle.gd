@@ -3,6 +3,9 @@ extends CharacterBody2D
 class_name Paddle
 
 @export var paddle_speed : float = 500.0
+@export var scale_decrement : float = 0.025
+
+var x_scale : float = 1.0
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, 0)
@@ -14,9 +17,12 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _on_ball_detector_body_entered(body: Node2D) -> void:
 	if body.name != "Ball": 
 		return
 	
 	body.bounce(Ball.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.PADDLE)
+
+func shrink_paddle() -> void:
+	x_scale -= scale_decrement
+	scale = Vector2(x_scale, 1)
