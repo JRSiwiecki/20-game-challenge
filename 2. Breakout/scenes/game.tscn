@@ -29,6 +29,7 @@ script = ExtResource("1_irhid")
 
 [node name="UI" parent="." instance=ExtResource("2_kewx5")]
 ball = ExtResource("2_8bwxo")
+metadata/_edit_lock_ = true
 
 [node name="Walls" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
