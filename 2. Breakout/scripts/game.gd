@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var brick : PackedScene 
 
 func _on_top_wall_body_entered(body: Node2D) -> void:
 	body.velocity.y *= -1
