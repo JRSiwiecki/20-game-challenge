@@ -1,15 +1,23 @@
-[gd_scene format=3 uid="uid://bqe8porfq4fgt"]
+[gd_scene load_steps=2 format=3 uid="uid://qxd5fythoxk8"]
 
-[node name="UI" type="Control"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_7glff"]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("score_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7glff")
+score_label = NodePath("CanvasLayer/Score Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Score Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 93.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"

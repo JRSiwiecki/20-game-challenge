@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1x0hoe4y26dh"]
+[gd_scene load_steps=12 format=3 uid="uid://d1x0hoe4y26dh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb2tl0xsslgb" path="res://scenes/paddle.tscn" id="1_crhca"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_irhid"]
 [ext_resource type="PackedScene" uid="uid://bkebbgf16fsrc" path="res://scenes/ball.tscn" id="2_8bwxo"]
+[ext_resource type="PackedScene" uid="uid://qxd5fythoxk8" path="res://scenes/ui.tscn" id="2_kewx5"]
 [ext_resource type="PackedScene" uid="uid://damxb0aj5wo2q" path="res://scenes/brick.tscn" id="3_71dva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekwta"]
@@ -25,6 +26,9 @@ size = Vector2(8, 771)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_irhid")
+
+[node name="UI" parent="." instance=ExtResource("2_kewx5")]
+ball = ExtResource("2_8bwxo")
 
 [node name="Walls" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -77,63 +81,61 @@ metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("2_8bwxo")]
 position = Vector2(187, 373)
-ball_speed = 500.0
-ball_speed_increase = 25.0
-max_ball_speed = 850.0
 metadata/_edit_lock_ = true
 
 [node name="Bricks" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="Brick" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(63, 42)
+position = Vector2(66, 62)
 
 [node name="Brick2" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(145, 42)
+position = Vector2(148, 62)
 
 [node name="Brick3" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(225, 42)
+position = Vector2(228, 62)
 
 [node name="Brick4" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(308, 42)
+position = Vector2(311, 62)
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(62, 84)
+position = Vector2(65, 104)
 
 [node name="Brick6" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(144, 84)
+position = Vector2(147, 104)
 
 [node name="Brick7" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(224, 84)
+position = Vector2(227, 104)
 
 [node name="Brick8" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(307, 84)
+position = Vector2(310, 104)
 
 [node name="Brick9" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(62, 126)
+position = Vector2(65, 146)
 
 [node name="Brick10" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(144, 126)
+position = Vector2(147, 146)
 
 [node name="Brick11" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(224, 126)
+position = Vector2(227, 146)
 
 [node name="Brick12" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(307, 126)
+position = Vector2(310, 146)
 
 [node name="Brick13" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(62, 167)
+position = Vector2(65, 187)
 
 [node name="Brick14" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(144, 167)
+position = Vector2(147, 187)
 
 [node name="Brick15" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(224, 167)
+position = Vector2(227, 187)
 
 [node name="Brick16" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(307, 167)
+position = Vector2(310, 187)
 
 [connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Left Wall/Area2D" to="." method="_on_left_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Right Wall/Area2D" to="." method="_on_right_wall_body_entered"]
+[connection signal="score_updated" from="Ball" to="UI" method="_on_ball_score_updated"]
