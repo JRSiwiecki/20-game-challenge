@@ -10,7 +10,7 @@ func _on_bottom_wall_body_entered(body: Node2D) -> void:
 	if body.name != "Ball": 
 		return
 	
-	body.queue_free()
+	body.bounce(body.Side_Of_Ball_Hit.BOTTOM, Globals.Object_Hit.WALL)
 
 func _on_left_wall_body_entered(body: Node2D) -> void:
 	if body.name != "Ball": 

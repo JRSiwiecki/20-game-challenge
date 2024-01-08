@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Ball
 
 signal score_updated
+signal lives_updated
 
 @export var ball_speed : float = 500.0
 @export var ball_speed_increase : float = 25.0
@@ -27,6 +28,14 @@ func bounce(side_of_ball_hit : Side_Of_Ball_Hit, object_hit : Globals.Object_Hit
 		increase_ball_speed()
 		Globals.increment_score()
 		score_updated.emit()
+	
+	# Hit the bottom wall
+	if object_hit == Globals.Object_Hit.WALL and Side_Of_Ball_Hit.BOTTOM:
+		Globals.decrement_lives()
+		lives_updated.emit()
+		
+		if Globals.lives <= -1:
+			queue_free()
 
 func increase_ball_speed() -> void:
 	

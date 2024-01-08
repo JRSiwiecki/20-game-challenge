@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_7glff"]
 
-[node name="UI" type="Control" node_paths=PackedStringArray("score_label")]
+[node name="UI" type="Control" node_paths=PackedStringArray("score_label", "lives_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7glff")
 score_label = NodePath("CanvasLayer/Score Label")
+lives_label = NodePath("CanvasLayer/Lives Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -21,3 +22,11 @@ offset_right = 93.0
 offset_bottom = 32.0
 theme_override_font_sizes/font_size = 20
 text = "Score: 0"
+
+[node name="Lives Label" type="Label" parent="CanvasLayer"]
+offset_left = 304.0
+offset_top = 4.0
+offset_right = 375.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 20
+text = "Lives: 3"

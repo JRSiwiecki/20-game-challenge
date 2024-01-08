@@ -138,4 +138,5 @@ position = Vector2(310, 187)
 [connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Left Wall/Area2D" to="." method="_on_left_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Right Wall/Area2D" to="." method="_on_right_wall_body_entered"]
+[connection signal="lives_updated" from="Ball" to="UI" method="_on_ball_lives_updated"]
 [connection signal="score_updated" from="Ball" to="UI" method="_on_ball_score_updated"]
