@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1x0hoe4y26dh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb2tl0xsslgb" path="res://scenes/paddle.tscn" id="1_crhca"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_irhid"]
 [ext_resource type="PackedScene" uid="uid://bkebbgf16fsrc" path="res://scenes/ball.tscn" id="2_8bwxo"]
-[ext_resource type="PackedScene" uid="uid://damxb0aj5wo2q" path="res://scenes/brick.tscn" id="3_71dva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ica0v"]
 size = Vector2(10, 773)
@@ -17,32 +17,33 @@ size = Vector2(402.75, 24.5)
 size = Vector2(8.5, 772)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_irhid")
 
 [node name="Walls" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+[node name="Left Wall" type="Area2D" parent="Walls"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
 position = Vector2(-5, 376.5)
 shape = SubResource("RectangleShape2D_ica0v")
 
-[node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
+[node name="Bottom Wall" type="Area2D" parent="Walls"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
 position = Vector2(192, 776)
 shape = SubResource("RectangleShape2D_ekwta")
 
-[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+[node name="Top Wall" type="Area2D" parent="Walls"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
 position = Vector2(192.625, -13.25)
 shape = SubResource("RectangleShape2D_kd7wd")
 
-[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+[node name="Right Wall" type="Area2D" parent="Walls"]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
@@ -55,20 +56,12 @@ metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("2_8bwxo")]
 position = Vector2(187, 373)
-gravity_scale = 0.0
 metadata/_edit_lock_ = true
 
 [node name="Bricks" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Brick" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(67, 43)
-
-[node name="Brick2" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(152, 42)
-
-[node name="Brick3" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(239, 43)
-
-[node name="Brick4" parent="Bricks" instance=ExtResource("3_71dva")]
-position = Vector2(324, 42)
+[connection signal="body_entered" from="Walls/Left Wall" to="." method="_on_left_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Right Wall" to="." method="_on_right_wall_body_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkebbgf16fsrc"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_lfsd4"]
+[ext_resource type="Texture2D" uid="uid://cwmdtoe8lkqn3" path="res://assets/art/ball.png" id="1_qj1p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq84x"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjloa"]
+size = Vector2(34, 34)
+
+[node name="Ball" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_lfsd4")
+ball_speed = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qj1p1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mq84x")
+
+[node name="Collision Detector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Detector"]
+shape = SubResource("RectangleShape2D_rjloa")
+
+[connection signal="body_entered" from="Collision Detector" to="." method="_on_paddle_detector_body_entered"]

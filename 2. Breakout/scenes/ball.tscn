@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkebbgf16fsrc"]
+[gd_scene load_steps=4 format=3 uid="uid://bkebbgf16fsrc"]
 
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_lfsd4"]
 [ext_resource type="Texture2D" uid="uid://cwmdtoe8lkqn3" path="res://assets/art/ball.png" id="1_qj1p1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq84x"]
 size = Vector2(32, 32)
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_lfsd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qj1p1")
