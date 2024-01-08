@@ -1,19 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1x0hoe4y26dh"]
+[gd_scene load_steps=8 format=3 uid="uid://d1x0hoe4y26dh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb2tl0xsslgb" path="res://scenes/paddle.tscn" id="1_crhca"]
 [ext_resource type="PackedScene" uid="uid://bkebbgf16fsrc" path="res://scenes/ball.tscn" id="2_8bwxo"]
 [ext_resource type="PackedScene" uid="uid://damxb0aj5wo2q" path="res://scenes/brick.tscn" id="3_71dva"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ica0v"]
+size = Vector2(10, 773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekwta"]
+size = Vector2(405, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd7wd"]
+size = Vector2(402.75, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67l42"]
+size = Vector2(8.5, 772)
+
 [node name="Game" type="Node2D"]
+
+[node name="Walls" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+position = Vector2(-5, 376.5)
+shape = SubResource("RectangleShape2D_ica0v")
+
+[node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
+position = Vector2(192, 776)
+shape = SubResource("RectangleShape2D_ekwta")
+
+[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+position = Vector2(192.625, -13.25)
+shape = SubResource("RectangleShape2D_kd7wd")
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+position = Vector2(388.25, 378)
+shape = SubResource("RectangleShape2D_67l42")
 
 [node name="Paddle" parent="." instance=ExtResource("1_crhca")]
 position = Vector2(192, 706)
+metadata/_edit_lock_ = true
 
 [node name="Ball" parent="." instance=ExtResource("2_8bwxo")]
-position = Vector2(192, 583)
+position = Vector2(187, 373)
 gravity_scale = 0.0
+metadata/_edit_lock_ = true
 
 [node name="Bricks" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Brick" parent="Bricks" instance=ExtResource("3_71dva")]
 position = Vector2(67, 43)
