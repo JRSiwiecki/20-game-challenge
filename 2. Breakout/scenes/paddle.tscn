@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpb2tl0xsslgb"]
+
+[ext_resource type="Texture2D" uid="uid://cpd7qor47rao" path="res://assets/art/paddle.png" id="1_jgjap"]
+[ext_resource type="Script" path="res://scripts/paddle.gd" id="1_shvbl"]
+[ext_resource type="AudioStream" uid="uid://1gas7767emcw" path="res://assets/sounds/paddle_hit.wav" id="2_abf2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kix8x"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x58f"]
+size = Vector2(135, 38)
+
+[node name="Paddle" type="CharacterBody2D" node_paths=PackedStringArray("paddle_hit")]
+script = ExtResource("1_shvbl")
+paddle_hit = NodePath("Paddle Hit")
+
+[node name="Paddle Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_abf2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jgjap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kix8x")
+
+[node name="Ball Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball Detector"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_3x58f")
+
+[connection signal="body_entered" from="Ball Detector" to="." method="_on_ball_detector_body_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://qxd5fythoxk8"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_7glff"]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("score_label", "high_score_label", "lives_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7glff")
+score_label = NodePath("CanvasLayer/Score Label")
+high_score_label = NodePath("CanvasLayer/High Score Label")
+lives_label = NodePath("CanvasLayer/Lives Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="High Score Label" type="Label" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 131.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 20
+text = "High Score: 0"
+
+[node name="Score Label" type="Label" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 93.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+
+[node name="Lives Label" type="Label" parent="CanvasLayer"]
+offset_left = 306.0
+offset_top = 5.0
+offset_right = 377.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 20
+text = "Lives: 3"

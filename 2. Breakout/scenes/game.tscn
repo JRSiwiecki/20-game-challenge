@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1x0hoe4y26dh"]
+
+[ext_resource type="PackedScene" uid="uid://dpb2tl0xsslgb" path="res://scenes/paddle.tscn" id="1_crhca"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_irhid"]
+[ext_resource type="PackedScene" uid="uid://bkebbgf16fsrc" path="res://scenes/ball.tscn" id="2_8bwxo"]
+[ext_resource type="PackedScene" uid="uid://qxd5fythoxk8" path="res://scenes/ui.tscn" id="2_kewx5"]
+[ext_resource type="PackedScene" uid="uid://damxb0aj5wo2q" path="res://scenes/brick.tscn" id="3_71dva"]
+[ext_resource type="AudioStream" uid="uid://duak30iqnq14j" path="res://assets/sounds/wall_hit.wav" id="6_ha35w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekwta"]
+size = Vector2(405, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd7wd"]
+size = Vector2(402.75, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ica0v"]
+size = Vector2(10, 773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn8wc"]
+size = Vector2(7, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67l42"]
+size = Vector2(8.5, 772)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y45xv"]
+size = Vector2(8, 771)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("wall_hit")]
+script = ExtResource("1_irhid")
+wall_hit = NodePath("Wall Hit")
+
+[node name="UI" parent="." instance=ExtResource("2_kewx5")]
+ball = ExtResource("2_8bwxo")
+metadata/_edit_lock_ = true
+
+[node name="Walls" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Bottom Wall" type="Area2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
+position = Vector2(192, 776)
+shape = SubResource("RectangleShape2D_ekwta")
+
+[node name="Top Wall" type="Area2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+position = Vector2(192.625, -13.25)
+shape = SubResource("RectangleShape2D_kd7wd")
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="Walls/Left Wall"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall/Area2D"]
+position = Vector2(-5, 376.5)
+shape = SubResource("RectangleShape2D_ica0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+position = Vector2(-6.5, 390)
+shape = SubResource("RectangleShape2D_nn8wc")
+metadata/_edit_lock_ = true
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+
+[node name="Area2D" type="Area2D" parent="Walls/Right Wall"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall/Area2D"]
+position = Vector2(388.25, 378)
+shape = SubResource("RectangleShape2D_67l42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+position = Vector2(389, 379.5)
+shape = SubResource("RectangleShape2D_y45xv")
+
+[node name="Paddle" parent="." instance=ExtResource("1_crhca")]
+position = Vector2(192, 706)
+metadata/_edit_lock_ = true
+
+[node name="Ball" parent="." node_paths=PackedStringArray("paddle") instance=ExtResource("2_8bwxo")]
+position = Vector2(187, 373)
+paddle = NodePath("../Paddle")
+metadata/_edit_lock_ = true
+
+[node name="Bricks" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Brick" parent="Bricks" instance=ExtResource("3_71dva")]
+position = Vector2(67, 80)
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("3_71dva")]
+position = Vector2(149, 80)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("3_71dva")]
+position = Vector2(229, 80)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("3_71dva")]
+position = Vector2(312, 80)
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(66, 122)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(148, 122)
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(228, 122)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(311, 122)
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(66, 164)
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(148, 164)
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(228, 164)
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(311, 164)
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(66, 205)
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(148, 205)
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(228, 205)
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("3_71dva")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(311, 205)
+
+[node name="Wall Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ha35w")
+
+[connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Left Wall/Area2D" to="." method="_on_left_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Right Wall/Area2D" to="." method="_on_right_wall_body_entered"]
+[connection signal="lives_updated" from="Ball" to="UI" method="_on_ball_lives_updated"]
+[connection signal="score_updated" from="Ball" to="UI" method="_on_ball_score_updated"]
