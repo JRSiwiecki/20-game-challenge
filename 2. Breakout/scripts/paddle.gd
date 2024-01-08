@@ -4,6 +4,9 @@ class_name Paddle
 
 @export var paddle_speed : float = 500.0
 
+const LEFT_BOUND : float = 0.0
+const RIGHT_BOUND : float = 200.0
+
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(0, 0)
 	
@@ -16,7 +19,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_ball_detector_body_entered(body: Node2D) -> void:
-	if body.name == "Paddle":
+	if body.name != "Ball": 
 		return
 	
 	body.velocity.y *= -1

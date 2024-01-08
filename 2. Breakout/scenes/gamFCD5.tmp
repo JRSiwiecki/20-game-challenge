@@ -11,17 +11,17 @@ size = Vector2(405, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd7wd"]
 size = Vector2(402.75, 24.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ica0v"]
-size = Vector2(10, 773)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn8wc"]
-size = Vector2(7, 800)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67l42"]
 size = Vector2(8.5, 772)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y45xv"]
 size = Vector2(8, 771)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ica0v"]
+size = Vector2(10, 773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn8wc"]
+size = Vector2(11, 800)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_irhid")
@@ -43,21 +43,6 @@ metadata/_edit_lock_ = true
 position = Vector2(192.625, -13.25)
 shape = SubResource("RectangleShape2D_kd7wd")
 
-[node name="Left Wall" type="StaticBody2D" parent="Walls"]
-metadata/_edit_lock_ = true
-
-[node name="Area2D" type="Area2D" parent="Walls/Left Wall"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall/Area2D"]
-position = Vector2(-5, 376.5)
-shape = SubResource("RectangleShape2D_ica0v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
-position = Vector2(-6.5, 390)
-shape = SubResource("RectangleShape2D_nn8wc")
-metadata/_edit_lock_ = true
-
 [node name="Right Wall" type="StaticBody2D" parent="Walls"]
 
 [node name="Area2D" type="Area2D" parent="Walls/Right Wall"]
@@ -70,6 +55,21 @@ shape = SubResource("RectangleShape2D_67l42")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
 position = Vector2(389, 379.5)
 shape = SubResource("RectangleShape2D_y45xv")
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="Walls/Left Wall"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall/Area2D"]
+position = Vector2(-5, 376.5)
+shape = SubResource("RectangleShape2D_ica0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+position = Vector2(-4.5, 390)
+shape = SubResource("RectangleShape2D_nn8wc")
+metadata/_edit_lock_ = true
 
 [node name="Paddle" parent="." instance=ExtResource("1_crhca")]
 position = Vector2(192, 706)
@@ -132,5 +132,5 @@ position = Vector2(307, 167)
 
 [connection signal="body_entered" from="Walls/Bottom Wall" to="." method="_on_bottom_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Top Wall" to="." method="_on_top_wall_body_entered"]
-[connection signal="body_entered" from="Walls/Left Wall/Area2D" to="." method="_on_left_wall_body_entered"]
 [connection signal="body_entered" from="Walls/Right Wall/Area2D" to="." method="_on_right_wall_body_entered"]
+[connection signal="body_entered" from="Walls/Left Wall/Area2D" to="." method="_on_left_wall_body_entered"]

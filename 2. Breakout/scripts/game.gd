@@ -1,15 +1,25 @@
 extends Node2D
 
-@export var brick : PackedScene 
-
 func _on_top_wall_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": 
+		return
+	
 	body.velocity.y *= -1
 
 func _on_bottom_wall_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": 
+		return
+	
 	body.velocity.y *= -1
 
 func _on_left_wall_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": 
+		return
+	
 	body.velocity.x *= -1
 
 func _on_right_wall_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": 
+		return
+	
 	body.velocity.x *= -1
