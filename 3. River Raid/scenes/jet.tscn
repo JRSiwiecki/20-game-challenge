@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgj2o5edvx78x"]
+[gd_scene load_steps=15 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
 [ext_resource type="Script" path="res://scripts/Jet.gd" id="1_vfmxh"]
+[ext_resource type="PackedScene" uid="uid://qreqak6rtwi6" path="res://scenes/missile.tscn" id="2_l7v4x"]
 [ext_resource type="PackedScene" uid="uid://dki4eeikx6ics" path="res://scenes/health_component.tscn" id="2_ubmqa"]
 [ext_resource type="PackedScene" uid="uid://bvn0cmaysbq4j" path="res://scenes/hitbox_component.tscn" id="3_bcv0b"]
 
@@ -82,6 +83,7 @@ hue_variation_max = 0.1
 
 [node name="Jet" type="CharacterBody2D" node_paths=PackedStringArray("animation", "left_particle_emitter", "right_particle_emitter", "engine_particle_emitter", "health_component")]
 script = ExtResource("1_vfmxh")
+missile_scene = ExtResource("2_l7v4x")
 animation = NodePath("AnimatedSprite2D")
 left_particle_emitter = NodePath("Left Particle Emitter")
 right_particle_emitter = NodePath("Right Particle Emitter")

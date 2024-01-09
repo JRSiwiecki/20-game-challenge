@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Jet
 
+@export var missile_scene : PackedScene
+
 @export var animation : AnimatedSprite2D
 @export var left_particle_emitter : GPUParticles2D
 @export var right_particle_emitter : GPUParticles2D
@@ -13,10 +15,17 @@ var speed : float = Globals.scroll_speed
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, -speed)
 	
+	check_attack_input()
 	check_forward_input()
 	check_side_input()
 	
 	move_and_slide()
+
+func check_attack_input() -> void:
+	if Input.is_action_just_pressed("shoot"):
+		var missile : Missile = missile_scene.instantiate()
+		owner.add_child(missile)
+		missile.position = global_position + Vector2(0.0, -100.0)
 
 func check_forward_input() -> void:
 	if Input.is_action_pressed("forward"):
@@ -59,7 +68,7 @@ func turn_off_particle_emitters() -> void:
 
 # Kill player if they collide with anything other than fuel.
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	if body.name == "Jet":
+	if body.name == "Jet" or body.name == "Missile":
 		return
 	
 	health_component.damage()
