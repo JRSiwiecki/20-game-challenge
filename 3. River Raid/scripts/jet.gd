@@ -6,6 +6,7 @@ class_name Jet
 @export var left_particle_emitter : GPUParticles2D
 @export var right_particle_emitter : GPUParticles2D
 @export var engine_particle_emitter : GPUParticles2D
+@export var health_component : HealthComponent
 
 var speed : float = Globals.scroll_speed
 
@@ -55,3 +56,10 @@ func turn_off_particle_emitters() -> void:
 	left_particle_emitter.emitting = false
 	right_particle_emitter.emitting = false
 	engine_particle_emitter.emitting = false
+
+# Kill player if they collide with anything other than fuel.
+func _on_hitbox_component_body_entered(body: Node2D) -> void:
+	if body.name == "Jet":
+		return
+	
+	health_component.damage()

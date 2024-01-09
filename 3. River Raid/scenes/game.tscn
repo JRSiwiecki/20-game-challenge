@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b20rwh2k1kvps"]
+[gd_scene load_steps=3 format=3 uid="uid://b20rwh2k1kvps"]
 
+[ext_resource type="PackedScene" uid="uid://c87ush6v8x4r4" path="res://scenes/tile_map.tscn" id="1_bjri4"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
 
 [node name="Game" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_bjri4")]
 
 [node name="Jet" parent="." instance=ExtResource("1_rohjg")]
 position = Vector2(0, 240)

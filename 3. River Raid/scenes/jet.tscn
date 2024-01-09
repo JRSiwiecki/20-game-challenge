@@ -80,12 +80,13 @@ color = Color(1, 0.533333, 0, 1)
 hue_variation_min = -0.1
 hue_variation_max = 0.1
 
-[node name="Jet" type="CharacterBody2D" node_paths=PackedStringArray("animation", "left_particle_emitter", "right_particle_emitter", "engine_particle_emitter")]
+[node name="Jet" type="CharacterBody2D" node_paths=PackedStringArray("animation", "left_particle_emitter", "right_particle_emitter", "engine_particle_emitter", "health_component")]
 script = ExtResource("1_vfmxh")
 animation = NodePath("AnimatedSprite2D")
 left_particle_emitter = NodePath("Left Particle Emitter")
 right_particle_emitter = NodePath("Right Particle Emitter")
 engine_particle_emitter = NodePath("Engine Particle Emitter")
+health_component = NodePath("HealthComponent")
 
 [node name="Follow Camera" type="Camera2D" parent="."]
 position = Vector2(0, -240)
@@ -104,7 +105,8 @@ metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ubmqa")]
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_bcv0b")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_bcv0b")]
+health_component = NodePath("../HealthComponent")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -131,3 +133,5 @@ emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_hicig")
 metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
