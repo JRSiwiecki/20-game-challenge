@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6yo3apfrivg0"]
+
+[ext_resource type="Texture2D" uid="uid://bkgkcm4eds322" path="res://assets/art/fighter.png" id="1_f6pa6"]
+[ext_resource type="Script" path="res://scripts/Fighter.gd" id="1_ge4ta"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_77axt"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_g17l3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq042"]
+size = Vector2(203, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ta2j"]
+size = Vector2(214, 70)
+
+[node name="Fighter" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+collision_mask = 2
+script = ExtResource("1_ge4ta")
+health_component = NodePath("HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f6pa6")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, 1)
+shape = SubResource("RectangleShape2D_iq042")
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_77axt")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_g17l3")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-18, 1)
+shape = SubResource("RectangleShape2D_8ta2j")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
