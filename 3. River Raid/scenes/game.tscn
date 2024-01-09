@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b20rwh2k1kvps"]
+[gd_scene load_steps=7 format=3 uid="uid://b20rwh2k1kvps"]
 
 [ext_resource type="PackedScene" uid="uid://c87ush6v8x4r4" path="res://scenes/tile_map.tscn" id="1_bjri4"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
 [ext_resource type="PackedScene" uid="uid://b1q3e0iuva3f4" path="res://scenes/bridge.tscn" id="3_p3kdp"]
+[ext_resource type="PackedScene" uid="uid://cydsqjctmjkf3" path="res://scenes/house.tscn" id="4_aaa3x"]
+[ext_resource type="Texture2D" uid="uid://qsyhipis24oe" path="res://assets/art/tree.png" id="5_qkhrh"]
+[ext_resource type="PackedScene" uid="uid://dwlhrymc46jkt" path="res://scenes/tree.tscn" id="6_7gejl"]
 
 [node name="Game" type="Node2D"]
 
@@ -15,3 +18,16 @@ position = Vector2(0, 900)
 [node name="Bridge" parent="." instance=ExtResource("3_p3kdp")]
 position = Vector2(0, -2000)
 scale = Vector2(2, 2)
+
+[node name="House" parent="." instance=ExtResource("4_aaa3x")]
+position = Vector2(-398, 761)
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(414, 272)
+texture = ExtResource("5_qkhrh")
+
+[node name="Tree2" parent="." instance=ExtResource("6_7gejl")]
+position = Vector2(-573, -764)
+
+[node name="House2" parent="." instance=ExtResource("4_aaa3x")]
+position = Vector2(579, -1205)
