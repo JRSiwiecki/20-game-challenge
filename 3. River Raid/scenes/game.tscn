@@ -1,13 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://b20rwh2k1kvps"]
 
-[ext_resource type="Script" path="res://scripts/FollowCamera.gd" id="1_p2ru3"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
+
+[sub_resource type="GDScript" id="GDScript_hgbsn"]
+script/source = "extends Camera2D
+
+@export var jet : Jet
+
+"
 
 [node name="Game" type="Node2D"]
 
-[node name="Follow Camera" type="Camera2D" parent="."]
-position_smoothing_speed = 10.0
-script = ExtResource("1_p2ru3")
-
 [node name="Jet" parent="." instance=ExtResource("1_rohjg")]
 position = Vector2(0, 240)
+
+[node name="Follow Camera" type="Camera2D" parent="Jet"]
+position = Vector2(0, -240)
+limit_left = -640
+limit_right = 640
+position_smoothing_speed = 10.0
+script = SubResource("GDScript_hgbsn")
