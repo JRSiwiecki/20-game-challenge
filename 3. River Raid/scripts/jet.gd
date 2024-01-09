@@ -10,10 +10,12 @@ class_name Jet
 @export var engine_particle_emitter : GPUParticles2D
 @export var health_component : HealthComponent
 
-var speed : float = Globals.scroll_speed
+var speed : float
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, -speed)
+	
+	speed = Globals.scroll_speed
 	
 	check_attack_input()
 	check_forward_input()
@@ -39,7 +41,7 @@ func check_forward_input() -> void:
 	
 	if Input.is_action_pressed("brake"):
 		Globals.decrease_scroll_speed()
-		velocity.y += speed
+		velocity.y += Globals.MAX_SCROLL_SPEED - Globals.MIN_SCROLL_SPEED
 	
 	if Input.is_action_just_released("brake"):
 		Globals.reset_scroll_speed()

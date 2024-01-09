@@ -19,15 +19,17 @@ position = Vector2(0, 900)
 position = Vector2(0, -2000)
 scale = Vector2(2, 2)
 
-[node name="House" parent="." instance=ExtResource("4_aaa3x")]
+[node name="Non-Destroyable World Objects" type="Node2D" parent="."]
+
+[node name="House" parent="Non-Destroyable World Objects" instance=ExtResource("4_aaa3x")]
 position = Vector2(-398, 761)
 
-[node name="Tree" type="Sprite2D" parent="."]
+[node name="Tree" type="Sprite2D" parent="Non-Destroyable World Objects"]
 position = Vector2(414, 272)
 texture = ExtResource("5_qkhrh")
 
-[node name="Tree2" parent="." instance=ExtResource("6_7gejl")]
+[node name="Tree2" parent="Non-Destroyable World Objects" instance=ExtResource("6_7gejl")]
 position = Vector2(-573, -764)
 
-[node name="House2" parent="." instance=ExtResource("4_aaa3x")]
+[node name="House2" parent="Non-Destroyable World Objects" instance=ExtResource("4_aaa3x")]
 position = Vector2(579, -1205)
