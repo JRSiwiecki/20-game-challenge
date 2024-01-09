@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgj2o5edvx78x"]
+[gd_scene load_steps=20 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_xysf1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t3uk"]
 atlas = ExtResource("1_hbp6f")
@@ -143,8 +144,13 @@ height = 116.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omxyy")
-animation = &"recenter_from_right"
-frame_progress = 0.281607
+animation = &"lean_right"
+frame_progress = 0.545396
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ea1uv")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_xysf1")
+
+[node name="HitboxComponent" type="Node2D" parent="."]
