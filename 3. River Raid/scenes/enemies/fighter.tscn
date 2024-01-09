@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6yo3apfrivg0"]
 
+[ext_resource type="Script" path="res://scripts/enemies/Fighter.gd" id="1_78jxp"]
 [ext_resource type="Texture2D" uid="uid://bkgkcm4eds322" path="res://assets/art/fighter.png" id="1_f6pa6"]
-[ext_resource type="Script" path="res://scripts/Fighter.gd" id="1_ge4ta"]
-[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_77axt"]
-[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_g17l3"]
+[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="3_supt5"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="4_jumb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq042"]
 size = Vector2(203, 49)
@@ -13,7 +13,7 @@ size = Vector2(214, 70)
 
 [node name="Fighter" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 collision_mask = 2
-script = ExtResource("1_ge4ta")
+script = ExtResource("1_78jxp")
 health_component = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,10 +27,10 @@ shape = SubResource("RectangleShape2D_iq042")
 metadata/_edit_lock_ = true
 
 [node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_77axt")
+script = ExtResource("3_supt5")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-script = ExtResource("3_g17l3")
+script = ExtResource("4_jumb6")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

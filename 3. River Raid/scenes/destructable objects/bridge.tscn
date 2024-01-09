@@ -1,21 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1q3e0iuva3f4"]
 
 [ext_resource type="Texture2D" uid="uid://djjj40u2f8lm6" path="res://assets/art/bridge.png" id="1_048w2"]
-[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_len81"]
-[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_fya8k"]
-
-[sub_resource type="GDScript" id="GDScript_r00bv"]
-script/source = "extends StaticBody2D
-
-@export var health_component : HealthComponent
-
-# If body is not the missile, we don't care what collides with the bridge.
-func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	if body.name != \"Missile\":
-		return
-	
-	health_component.damage()
-"
+[ext_resource type="Script" path="res://scripts/destructable objects/bridge.gd" id="1_aagmx"]
+[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="3_epyrp"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="4_aogrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmax7"]
 size = Vector2(512, 255)
@@ -24,7 +12,7 @@ size = Vector2(512, 255)
 size = Vector2(512, 274)
 
 [node name="Bridge" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
-script = SubResource("GDScript_r00bv")
+script = ExtResource("1_aagmx")
 health_component = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -37,10 +25,10 @@ shape = SubResource("RectangleShape2D_xmax7")
 metadata/_edit_lock_ = true
 
 [node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_len81")
+script = ExtResource("3_epyrp")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-script = ExtResource("3_fya8k")
+script = ExtResource("4_aogrq")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

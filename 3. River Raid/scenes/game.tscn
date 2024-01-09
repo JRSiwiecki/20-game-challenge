@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c87ush6v8x4r4" path="res://scenes/tile_map.tscn" id="1_bjri4"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
-[ext_resource type="PackedScene" uid="uid://b1q3e0iuva3f4" path="res://scenes/bridge.tscn" id="3_p3kdp"]
-[ext_resource type="PackedScene" uid="uid://cydsqjctmjkf3" path="res://scenes/house.tscn" id="4_aaa3x"]
+[ext_resource type="PackedScene" uid="uid://b1q3e0iuva3f4" path="res://scenes/destructable objects/bridge.tscn" id="3_p3kdp"]
+[ext_resource type="PackedScene" uid="uid://cydsqjctmjkf3" path="res://scenes/decorations/house.tscn" id="4_aaa3x"]
 [ext_resource type="Texture2D" uid="uid://qsyhipis24oe" path="res://assets/art/tree.png" id="5_qkhrh"]
-[ext_resource type="PackedScene" uid="uid://dwlhrymc46jkt" path="res://scenes/tree.tscn" id="6_7gejl"]
-[ext_resource type="PackedScene" uid="uid://duvnrh5gd2bu7" path="res://scenes/boat.tscn" id="7_x0rcq"]
-[ext_resource type="PackedScene" uid="uid://b6yo3apfrivg0" path="res://scenes/fighter.tscn" id="8_omies"]
-[ext_resource type="PackedScene" uid="uid://b44kceruysmwj" path="res://scenes/helicopter.tscn" id="8_vy45f"]
+[ext_resource type="PackedScene" uid="uid://dwlhrymc46jkt" path="res://scenes/decorations/tree.tscn" id="6_7gejl"]
+[ext_resource type="PackedScene" uid="uid://duvnrh5gd2bu7" path="res://scenes/enemies/boat.tscn" id="7_x0rcq"]
+[ext_resource type="PackedScene" uid="uid://b6yo3apfrivg0" path="res://scenes/enemies/fighter.tscn" id="8_omies"]
+[ext_resource type="PackedScene" uid="uid://b44kceruysmwj" path="res://scenes/enemies/helicopter.tscn" id="8_vy45f"]
 
 [node name="Game" type="Node2D"]
 
