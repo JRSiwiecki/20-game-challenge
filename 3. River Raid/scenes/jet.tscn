@@ -1,8 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgj2o5edvx78x"]
+[gd_scene load_steps=22 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
-[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_xysf1"]
-[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_0vhxn"]
+[ext_resource type="PackedScene" uid="uid://dki4eeikx6ics" path="res://scenes/health_component.tscn" id="2_ubmqa"]
+[ext_resource type="PackedScene" uid="uid://bvn0cmaysbq4j" path="res://scenes/hitbox_component.tscn" id="3_bcv0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_631c2"]
+radius = 43.1856
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t3uk"]
 atlas = ExtResource("1_hbp6f")
@@ -137,22 +140,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ea1uv"]
-radius = 48.0
-height = 116.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6vb8"]
+radius = 47.0
+height = 114.0
 
 [node name="Jet" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_631c2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omxyy")
 animation = &"lean_right"
 frame_progress = 0.545396
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ea1uv")
+[node name="HealthComponent" parent="." instance=ExtResource("2_ubmqa")]
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_xysf1")
+[node name="HitboxComponent" parent="." instance=ExtResource("3_bcv0b")]
 
-[node name="HitboxComponent" type="Area2D" parent="."]
-script = ExtResource("3_0vhxn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_a6vb8")
