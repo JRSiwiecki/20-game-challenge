@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgj2o5edvx78x"]
+[gd_scene load_steps=21 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
 [ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_xysf1"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_0vhxn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t3uk"]
 atlas = ExtResource("1_hbp6f")
@@ -153,4 +154,5 @@ shape = SubResource("CapsuleShape2D_ea1uv")
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("2_xysf1")
 
-[node name="HitboxComponent" type="Node2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_0vhxn")
