@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b20rwh2k1kvps"]
+[gd_scene load_steps=8 format=3 uid="uid://b20rwh2k1kvps"]
 
 [ext_resource type="PackedScene" uid="uid://c87ush6v8x4r4" path="res://scenes/tile_map.tscn" id="1_bjri4"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cydsqjctmjkf3" path="res://scenes/house.tscn" id="4_aaa3x"]
 [ext_resource type="Texture2D" uid="uid://qsyhipis24oe" path="res://assets/art/tree.png" id="5_qkhrh"]
 [ext_resource type="PackedScene" uid="uid://dwlhrymc46jkt" path="res://scenes/tree.tscn" id="6_7gejl"]
+[ext_resource type="PackedScene" uid="uid://duvnrh5gd2bu7" path="res://scenes/boat.tscn" id="7_x0rcq"]
 
 [node name="Game" type="Node2D"]
 
@@ -33,3 +34,6 @@ position = Vector2(-573, -764)
 
 [node name="House2" parent="Non-Destroyable World Objects" instance=ExtResource("4_aaa3x")]
 position = Vector2(579, -1205)
+
+[node name="Boat" parent="." instance=ExtResource("7_x0rcq")]
+position = Vector2(-338, -1086)
