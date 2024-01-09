@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b20rwh2k1kvps"]
+
+[ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Jet" parent="." instance=ExtResource("1_rohjg")]
+position = Vector2(0, 240)
