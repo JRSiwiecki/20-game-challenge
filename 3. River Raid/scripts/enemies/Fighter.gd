@@ -4,11 +4,13 @@ extends CharacterBody2D
 
 @export var fighter_speed : float = 300.0
 
+const CAMERA_OFFSET : float = 100.0
+
 func _physics_process(delta: float) -> void:
-	if position.x <= Globals.CAMERA_LEFT_LIMIT:
-		position.x = Globals.CAMERA_RIGHT_LIMIT
-	elif position.x >= Globals.CAMERA_RIGHT_LIMIT:
-		position.x = Globals.CAMERA_LEFT_LIMIT
+	if position.x <= (Globals.CAMERA_LEFT_LIMIT - CAMERA_OFFSET):
+		position.x = Globals.CAMERA_RIGHT_LIMIT + CAMERA_OFFSET
+	elif position.x >= (Globals.CAMERA_RIGHT_LIMIT + CAMERA_OFFSET):
+		position.x = Globals.CAMERA_LEFT_LIMIT - CAMERA_OFFSET
 	
 	velocity.x = fighter_speed
 	move_and_slide()
