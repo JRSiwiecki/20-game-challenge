@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
-[ext_resource type="Script" path="res://scripts/jet.gd" id="1_vfmxh"]
+[ext_resource type="Script" path="res://scripts/Jet.gd" id="1_vfmxh"]
 [ext_resource type="PackedScene" uid="uid://dki4eeikx6ics" path="res://scenes/health_component.tscn" id="2_ubmqa"]
 [ext_resource type="PackedScene" uid="uid://bvn0cmaysbq4j" path="res://scenes/hitbox_component.tscn" id="3_bcv0b"]
 
