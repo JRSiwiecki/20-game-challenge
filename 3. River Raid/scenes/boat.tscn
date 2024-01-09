@@ -11,13 +11,15 @@ size = Vector2(97, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dko7r"]
 size = Vector2(103, 28)
 
-[node name="Boat" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+[node name="Boat" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "sprite")]
 scale = Vector2(2, 2)
 script = ExtResource("1_6mofr")
 health_component = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5a522")
+flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
