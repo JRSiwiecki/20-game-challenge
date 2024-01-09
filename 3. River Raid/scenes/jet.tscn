@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgj2o5edvx78x"]
+[gd_scene load_steps=14 format=3 uid="uid://bgj2o5edvx78x"]
 
 [ext_resource type="Texture2D" uid="uid://cpsltjt5cdy4k" path="res://assets/art/jet.png" id="1_hbp6f"]
 [ext_resource type="Script" path="res://scripts/Jet.gd" id="1_vfmxh"]
@@ -11,6 +11,10 @@ radius = 43.1856
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4be3"]
 atlas = ExtResource("1_hbp6f")
 region = Rect2(1920, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw7oo"]
+atlas = ExtResource("1_hbp6f")
+region = Rect2(2432, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82dif"]
 atlas = ExtResource("1_hbp6f")
@@ -27,6 +31,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_a4be3")
 }],
 "loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw7oo")
+}],
+"loop": true,
 "name": &"forward",
 "speed": 5.0
 }, {
@@ -51,20 +63,71 @@ animations = [{
 radius = 47.0
 height = 114.0
 
-[node name="Jet" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_se6x6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 5.0
+scale_max = 10.0
+turbulence_noise_speed = Vector3(0, 20, 0)
+turbulence_influence_max = 0.29
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hicig"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 5.0
+scale_max = 10.0
+color = Color(1, 0.533333, 0, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="Jet" type="CharacterBody2D" node_paths=PackedStringArray("animation", "left_particle_emitter", "right_particle_emitter", "engine_particle_emitter")]
 script = ExtResource("1_vfmxh")
 animation = NodePath("AnimatedSprite2D")
+left_particle_emitter = NodePath("Left Particle Emitter")
+right_particle_emitter = NodePath("Right Particle Emitter")
+engine_particle_emitter = NodePath("Engine Particle Emitter")
+
+[node name="Follow Camera" type="Camera2D" parent="."]
+position = Vector2(0, -240)
+limit_left = -640
+limit_right = 640
+position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_631c2")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omxyy")
-animation = &"lean_right"
+animation = &"forward"
+metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ubmqa")]
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_bcv0b")]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_a6vb8")
+metadata/_edit_lock_ = true
+
+[node name="Left Particle Emitter" type="GPUParticles2D" parent="."]
+position = Vector2(-45, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_se6x6")
+metadata/_edit_lock_ = true
+
+[node name="Right Particle Emitter" type="GPUParticles2D" parent="."]
+position = Vector2(45, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_se6x6")
+metadata/_edit_lock_ = true
+
+[node name="Engine Particle Emitter" type="GPUParticles2D" parent="."]
+position = Vector2(0, 58)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hicig")
+metadata/_edit_lock_ = true
