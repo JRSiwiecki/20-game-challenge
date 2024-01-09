@@ -14,16 +14,12 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("forward"):
 		Globals.increase_scroll_speed()
-		left_particle_emitter.emitting = true
-		right_particle_emitter.emitting = true
-		engine_particle_emitter.emitting = true
+		turn_on_particle_emitters()
 		velocity.y -= speed
 	
 	if Input.is_action_just_released("forward"):
 		Globals.reset_scroll_speed()
-		left_particle_emitter.emitting = false
-		right_particle_emitter.emitting = false
-		engine_particle_emitter.emitting = false
+		turn_off_particle_emitters()
 		
 	if Input.is_action_pressed("left"):
 		velocity.x += -speed
@@ -37,3 +33,13 @@ func _physics_process(_delta: float) -> void:
 		animation.play("default")
 	
 	move_and_slide()
+
+func turn_on_particle_emitters() -> void:
+	left_particle_emitter.emitting = true
+	right_particle_emitter.emitting = true
+	engine_particle_emitter.emitting = true
+
+func turn_off_particle_emitters() -> void:
+	left_particle_emitter.emitting = false
+	right_particle_emitter.emitting = false
+	engine_particle_emitter.emitting = false
