@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://duvnrh5gd2bu7"]
 
 [ext_resource type="Texture2D" uid="uid://dx1y1rdjt0ybg" path="res://assets/art/boat.png" id="1_5a522"]
-[ext_resource type="Script" path="res://scripts/boat.gd" id="1_6mofr"]
+[ext_resource type="Script" path="res://scripts/Boat.gd" id="1_6mofr"]
 [ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_kf25t"]
 [ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_slus7"]
 

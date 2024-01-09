@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b44kceruysmwj"]
+
+[ext_resource type="Texture2D" uid="uid://cg8xb46ccy5ov" path="res://assets/art/helicopter.png" id="1_6kgpp"]
+[ext_resource type="Script" path="res://scripts/Helicopter.gd" id="1_uyebu"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_xtrvk"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_qkd0h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ge2mt"]
+radius = 48.0104
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fwn1d"]
+radius = 61.0737
+
+[node name="Helicopter" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "sprite")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_uyebu")
+health_component = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6kgpp")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ge2mt")
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_xtrvk")
+metadata/_edit_lock_ = true
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_qkd0h")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_fwn1d")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
