@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1q3e0iuva3f4"]
+
+[ext_resource type="Texture2D" uid="uid://djjj40u2f8lm6" path="res://assets/art/bridge.png" id="1_048w2"]
+[ext_resource type="Script" path="res://scenes/Bridge.gd" id="1_d2df5"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2_len81"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="3_fya8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmax7"]
+size = Vector2(512, 255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkudm"]
+size = Vector2(512, 266)
+
+[node name="Bridge" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_d2df5")
+health_component = NodePath("HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_048w2")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_xmax7")
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_len81")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_fya8k")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_bkudm")
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
