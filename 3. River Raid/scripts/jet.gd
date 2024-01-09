@@ -11,6 +11,9 @@ var speed : float = 400.0
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(0, 0)
 	
+	if Input.is_action_pressed("forward"):
+		velocity.y -= speed
+	
 	if Input.is_action_pressed("left"):
 		velocity.x += -speed
 		animation.play("lean_left")
