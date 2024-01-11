@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name Fighter
+
+signal enemy_destroyed
+
 @export var health_component : HealthComponent
 
 @export var fighter_speed : float = 300.0
@@ -21,3 +25,4 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 		return
 	
 	health_component.damage()
+	enemy_destroyed.emit()

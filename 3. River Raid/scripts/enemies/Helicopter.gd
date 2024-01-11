@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name Helicopter
+
+signal enemy_destroyed
+
 @export var health_component : HealthComponent
 @export var sprite : Sprite2D
 
@@ -21,3 +25,4 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 		return
 	
 	health_component.damage()
+	enemy_destroyed.emit()

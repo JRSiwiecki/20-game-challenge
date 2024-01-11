@@ -1,4 +1,5 @@
 extends Node2D
+
 class_name HealthComponent
 
 func damage() -> void:

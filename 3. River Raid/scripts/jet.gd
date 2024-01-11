@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Jet
 
+signal player_destroyed()
+
 @export var missile_scene : PackedScene
 
 @export var animation : AnimatedSprite2D
@@ -86,6 +88,7 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 		return
 	
 	health_component.damage()
+	player_destroyed.emit()
 
 func _on_fuel_timer_timeout() -> void:
 	fuel -= 5
