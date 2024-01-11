@@ -73,4 +73,11 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body.name == "Jet" or body.name == "Missile":
 		return
 	
+	if body.name == "Fuel":
+		refuel()
+		return
+	
 	health_component.damage()
+
+func refuel() -> void:
+	print("refuel")

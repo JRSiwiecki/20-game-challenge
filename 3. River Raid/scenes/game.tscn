@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b20rwh2k1kvps"]
+[gd_scene load_steps=11 format=3 uid="uid://b20rwh2k1kvps"]
 
 [ext_resource type="PackedScene" uid="uid://c87ush6v8x4r4" path="res://scenes/tile_map.tscn" id="1_bjri4"]
 [ext_resource type="PackedScene" uid="uid://bgj2o5edvx78x" path="res://scenes/jet.tscn" id="1_rohjg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://duvnrh5gd2bu7" path="res://scenes/enemies/boat.tscn" id="7_x0rcq"]
 [ext_resource type="PackedScene" uid="uid://b6yo3apfrivg0" path="res://scenes/enemies/fighter.tscn" id="8_omies"]
 [ext_resource type="PackedScene" uid="uid://b44kceruysmwj" path="res://scenes/enemies/helicopter.tscn" id="8_vy45f"]
+[ext_resource type="PackedScene" uid="uid://1cw10pospatb" path="res://scenes/destructable objects/fuel.tscn" id="10_negmt"]
 
 [node name="Game" type="Node2D"]
 
@@ -35,6 +36,9 @@ position = Vector2(579, -1205)
 [node name="Bridge" parent="Destroyable World Objects" instance=ExtResource("3_p3kdp")]
 position = Vector2(0, -2000)
 scale = Vector2(2, 2)
+
+[node name="Fuel" parent="Destroyable World Objects" instance=ExtResource("10_negmt")]
+position = Vector2(-10, -1022)
 
 [node name="Enemies" type="Node2D" parent="."]
 
