@@ -13,3 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.health_component.damage()
 	
 	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
