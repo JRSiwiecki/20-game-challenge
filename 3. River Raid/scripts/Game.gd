@@ -8,10 +8,9 @@ var high_score : int = 0
 var score : int = 0
 
 func _ready() -> void:
-	
 	# Connect signals for destructables
 	for destructable in destructables_group.get_children():
-		if destructable.name == "Bridge":
+		if destructable is Bridge:
 			destructable.bridge_destroyed.connect(_on_bridge_bridge_destroyed)
 		else:
 			destructable.fuel_destroyed.connect(_on_fuel_fuel_destroyed)

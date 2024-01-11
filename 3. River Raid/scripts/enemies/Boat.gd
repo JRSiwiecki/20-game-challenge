@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 
 # If body is not the missile, we don't care what collides with the boat.
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	if body.name == "TileMap":
+	if body is TileMap:
 		boat_speed = -boat_speed
 		sprite.flip_h = !sprite.flip_h
 

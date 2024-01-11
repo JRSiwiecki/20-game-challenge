@@ -12,6 +12,7 @@ size = Vector2(512, 255)
 size = Vector2(512, 274)
 
 [node name="Bridge" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
+scale = Vector2(2, 2)
 script = ExtResource("1_aagmx")
 health_component = NodePath("HealthComponent")
 

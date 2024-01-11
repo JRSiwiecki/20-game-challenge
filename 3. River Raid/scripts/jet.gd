@@ -79,10 +79,10 @@ func refuel() -> void:
 
 # Kill player if they collide with anything other than fuel.
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	if body.name == "Jet" or body.name == "Missile":
+	if body is Jet or body is Missile:
 		return
 	
-	if body.name == "Fuel":
+	if body is Fuel:
 		refuel()
 		body.queue_free()
 		return

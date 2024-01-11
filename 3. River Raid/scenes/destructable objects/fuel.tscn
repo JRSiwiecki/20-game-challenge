@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1cw10pospatb"]
 
 [ext_resource type="Texture2D" uid="uid://wckhsmb5sltk" path="res://assets/art/fuel.png" id="1_mukvm"]
-[ext_resource type="Script" path="res://scenes/destructable objects/Fuel.gd" id="1_tclud"]
+[ext_resource type="Script" path="res://scripts/destructable objects/Fuel.gd" id="1_tclud"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="2_bqux0"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_warp6"]
 
