@@ -19,10 +19,6 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body.name == "TileMap":
 		helicopter_speed = -helicopter_speed
 		sprite.flip_h = !sprite.flip_h
-		
-	
-	if body.name != "Missile":
-		return
-	
-	health_component.damage()
+
+func emit_unique_signal() -> void:
 	enemy_destroyed.emit()

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Jet
 
-signal player_destroyed()
+signal player_destroyed
 
 @export var missile_scene : PackedScene
 
@@ -75,7 +75,7 @@ func turn_off_particle_emitters() -> void:
 
 func refuel() -> void:
 	fuel = max( fuel + 10, MAX_FUEL)
-	print(fuel)
+	print("fuel: " + str(fuel))
 
 # Kill player if they collide with anything other than fuel.
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
@@ -88,8 +88,10 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 		return
 	
 	health_component.damage()
-	player_destroyed.emit()
 
 func _on_fuel_timer_timeout() -> void:
 	fuel -= 5
-	print(fuel)
+	print("fuel: " + str(fuel))
+
+func emit_unique_signal() -> void:
+	player_destroyed.emit()

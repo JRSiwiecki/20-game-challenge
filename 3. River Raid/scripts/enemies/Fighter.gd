@@ -19,10 +19,5 @@ func _physics_process(_delta: float) -> void:
 	velocity.x = fighter_speed
 	move_and_slide()
 
-# If body is not the missile or jet, we don't care what collides with the fighter.
-func _on_hitbox_component_body_entered(body: Node2D) -> void:
-	if body.name != "Missile":
-		return
-	
-	health_component.damage()
+func emit_unique_signal() -> void:
 	enemy_destroyed.emit()
