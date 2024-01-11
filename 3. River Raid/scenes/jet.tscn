@@ -136,4 +136,8 @@ amount = 20
 process_material = SubResource("ParticleProcessMaterial_hicig")
 metadata/_edit_lock_ = true
 
+[node name="Fuel Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
+[connection signal="timeout" from="Fuel Timer" to="." method="_on_fuel_timer_timeout"]

@@ -10,7 +10,10 @@ class_name Jet
 @export var engine_particle_emitter : GPUParticles2D
 @export var health_component : HealthComponent
 
+const MAX_FUEL : int = 100
+
 var speed : float
+var fuel : int = MAX_FUEL
 
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, -speed)
@@ -68,6 +71,10 @@ func turn_off_particle_emitters() -> void:
 	right_particle_emitter.emitting = false
 	engine_particle_emitter.emitting = false
 
+func refuel() -> void:
+	fuel = max( fuel + 10, MAX_FUEL)
+	print(fuel)
+
 # Kill player if they collide with anything other than fuel.
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body.name == "Jet" or body.name == "Missile":
@@ -80,5 +87,6 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	
 	health_component.damage()
 
-func refuel() -> void:
-	print("refuel")
+func _on_fuel_timer_timeout() -> void:
+	fuel -= 5
+	print(fuel)
