@@ -9,10 +9,9 @@
 size = Vector2(192, 255)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o0so"]
-size = Vector2(214, 276)
+size = Vector2(217, 286)
 
 [node name="Fuel" type="StaticBody2D" node_paths=PackedStringArray("health_component")]
-collision_layer = 2
 script = ExtResource("1_tclud")
 health_component = NodePath("HealthComponent")
 
@@ -31,7 +30,9 @@ script = ExtResource("2_bqux0")
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("3_warp6")
 health_component = NodePath("../HealthComponent")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(1, 0)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_0o0so")
+metadata/_edit_lock_ = true

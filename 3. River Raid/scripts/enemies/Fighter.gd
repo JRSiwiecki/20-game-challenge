@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 const CAMERA_OFFSET : float = 100.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if position.x <= (Globals.CAMERA_LEFT_LIMIT - CAMERA_OFFSET):
 		position.x = Globals.CAMERA_RIGHT_LIMIT + CAMERA_OFFSET
 	elif position.x >= (Globals.CAMERA_RIGHT_LIMIT + CAMERA_OFFSET):

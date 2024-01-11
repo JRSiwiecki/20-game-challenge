@@ -75,6 +75,7 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	
 	if body.name == "Fuel":
 		refuel()
+		body.queue_free()
 		return
 	
 	health_component.damage()
