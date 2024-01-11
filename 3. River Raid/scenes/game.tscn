@@ -145,9 +145,6 @@ position = Vector2(353, -5685)
 [node name="Fighter3" parent="Enemies" instance=ExtResource("8_omies")]
 position = Vector2(-270, -8196)
 
-[node name="Fighter4" parent="Enemies" instance=ExtResource("8_omies")]
-position = Vector2(9, -8384)
-
 [node name="Fighter5" parent="Enemies" instance=ExtResource("8_omies")]
 position = Vector2(314, -8537)
 
@@ -156,3 +153,15 @@ position = Vector2(-9, -6925)
 
 [node name="Jet" parent="." instance=ExtResource("1_rohjg")]
 position = Vector2(0, 800)
+
+[node name="Fighter" parent="." instance=ExtResource("8_omies")]
+position = Vector2(20, -2613)
+
+[node name="Boat" parent="." instance=ExtResource("7_x0rcq")]
+position = Vector2(331, -590)
+
+[node name="Boat2" parent="." instance=ExtResource("7_x0rcq")]
+position = Vector2(312, -8346)
+
+[node name="Helicopter" parent="." instance=ExtResource("8_vy45f")]
+position = Vector2(-418, -7524)
