@@ -91,6 +91,10 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 
 func _on_fuel_timer_timeout() -> void:
 	fuel -= 5
+	
+	if fuel <= 0:
+		queue_free()
+	
 	print("fuel: " + str(fuel))
 
 func emit_unique_signal() -> void:
