@@ -16,7 +16,9 @@ func _ready() -> void:
 		else:
 			destructable.fuel_destroyed.connect(_on_fuel_fuel_destroyed)
 		
-		print(destructable)
+	# Connect signals for enemies
+	for enemy in enemies_group.get_children():
+		enemy.enemy_destroyed.connect(_on_enemy_enemy_destroyed)
 
 func _on_bridge_bridge_destroyed() -> void:
 	score += 50
@@ -24,4 +26,8 @@ func _on_bridge_bridge_destroyed() -> void:
 
 func _on_fuel_fuel_destroyed() -> void:
 	score += 20
+	print("score: ", score)
+
+func _on_enemy_enemy_destroyed() -> void:
+	score += 10
 	print("score: ", score)
